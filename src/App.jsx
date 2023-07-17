@@ -1,33 +1,55 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [vitaminA, setVitaminA] = useState(false);
+  const [vitaminB, setVitaminB] = useState(false);
+  const [vitaminC, setVitaminC] = useState(false);
 
   return (
     <>
-      <div>
-        <a href='https://vitejs.dev' target='_blank'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
+      <div className='maindiv'>
+        <div className='vitamins'>
+          <h1>Today's Vitamins</h1>
+          <div>
+            <label>
+              <input
+                type='checkbox'
+                checked={vitaminA}
+                onChange={() => setVitaminA(!vitaminA)}
+              />
+              Vitamin A
+            </label>
+            <label>
+              <input
+                type='checkbox'
+                checked={vitaminB}
+                onChange={() => setVitaminB(!vitaminB)}
+              />
+              Vitamin B
+            </label>
+            <label>
+              <input
+                type='checkbox'
+                checked={vitaminC}
+                onChange={() => setVitaminC(!vitaminC)}
+              />
+              Vitamin C
+            </label>
+          </div>
+          <div>
+            <img
+              className='refresh'
+              src='refresh.png'
+              alt='refresh'
+              onClick={() => {
+                setVitaminA(false);
+                setVitaminB(false);
+                setVitaminC(false);
+              }}
+            />
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }
