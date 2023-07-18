@@ -14,7 +14,7 @@ Screenshot:
 
 - [Features](#features)
 - [Usage](#usage)
-  - [Install Dependencies)](#install-dependencies)
+  - [Install Dependencies](#install-dependencies)
   - [Run](#run)
   - [Build & Deploy](#build--deploy)
 
@@ -23,6 +23,7 @@ Screenshot:
 ## Features
 
 - Vitamin tracking
+- More to be added soon...
 
 ## Usage
 
