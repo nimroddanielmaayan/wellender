@@ -24,5 +24,17 @@ label {
 }
 
 .refresh {
-  padding-top: 20px;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.refresh:hover {
+  transform: scale(1.1);
+}
+
+.newVitaminForm {
+  padding-top: 50px;
+  display: block;
 }

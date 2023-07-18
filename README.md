@@ -1,12 +1,12 @@
 # Wellender
 
-### A vitamin tracking app and more
+### A supplement tracking app and more
 
-Live version: (to be added)
+Live version: https://wellender.netlify.app/
 
 Screenshot:
 
-<img src="./public/screen.png">
+<img src="./public/screen1.png">
 
 <!-- toc -->
 
@@ -22,7 +22,7 @@ Screenshot:
 
 ## Features
 
-- Vitamin tracking
+- Supplement tracking
 - More to be added soon...
 
 ## Usage
