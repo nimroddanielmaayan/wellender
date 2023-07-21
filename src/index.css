@@ -18,7 +18,12 @@ label {
   border: 1px solid darkgray;
 }
 
-.vitamins {
+.supp {
+  padding-top: 0.8vh;
+  padding-bottom: 0.8vh;
+}
+
+.supps {
   padding-top: 10vh;
   padding-bottom: 20vh;
 }
@@ -32,9 +37,10 @@ label {
 
 .refresh:hover {
   transform: scale(1.1);
+  cursor: pointer;
 }
 
-.newVitaminForm {
+.newSuppForm {
   padding-top: 50px;
   display: block;
 }
