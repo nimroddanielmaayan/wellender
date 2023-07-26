@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from 'react';
+import { useState, useEffect, useRef, createContext } from 'react';
 import Supp from './components/Supp';
 
 /* Component-wide code */
@@ -33,7 +33,7 @@ function App() {
 
   // Handle supplement edit
 
-  // Stage 1: Toggle edit mode
+  // Stage 1: Toggle edit mode (is passed to the Supp component)
   const handleSuppEdit = (id) => {
     setSupps((prevSupps) =>
       prevSupps.map((supp) =>
@@ -42,8 +42,31 @@ function App() {
     );
   };
 
-  // Stage 2: Update the supplement
-  // (complete this later, call the function handleSuppUpdate)
+  // Stage 2: Update the supplement's name (is passed to the SuppEditForm component)
+  // Edit supplement form - state
+  const [editInputValue, setEditInputValue] = useState('');
+
+  // Handle edit supplement form input
+  const handleEditChange = (event) => {
+    setEditInputValue(event.target.value);
+  };
+
+  // Handle edit supplement form submission
+  const handleEditClick = (event, currentSupp) => {
+    event.preventDefault();
+
+    if (editInputValue !== '') {
+      setSupps((prevSupps) =>
+        prevSupps.map((supp) =>
+          supp.id === currentSupp.id
+            ? { ...supp, suppName: editInputValue, isEditing: false }
+            : supp
+        )
+      );
+
+      setEditInputValue('');
+    }
+  };
 
   // Handle supplement delete
   const handleSuppDelete = (id) => {
@@ -75,10 +98,16 @@ function App() {
   // Handle new supplement form submission
   const handleSubmit = (event) => {
     event.preventDefault();
+
     if (inputValue !== '') {
       setSupps((prevSupps) => [
         ...prevSupps,
-        { id: nextSuppId, suppName: inputValue, isChecked: false },
+        {
+          id: nextSuppId,
+          suppName: inputValue,
+          isChecked: false,
+          isEditing: false,
+        },
       ]);
       setNextSuppId((prevNextSuppId) => prevNextSuppId + 1);
       setInputValue('');
@@ -91,6 +120,9 @@ function App() {
         handleSuppChange,
         handleSuppDelete,
         handleSuppEdit,
+        editInputValue,
+        handleEditChange,
+        handleEditClick,
       }}
     >
       <div className='maindiv'>

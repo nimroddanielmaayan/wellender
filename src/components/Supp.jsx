@@ -26,7 +26,7 @@ function Supp({ supp }) {
         onClick={() => handleSuppDelete(supp.id)}
         style={{ marginLeft: '0.6vw', cursor: 'pointer' }}
       />
-      {supp.isEditing && <SuppEditForm supp={supp} />}
+      {supp.isEditing && <SuppEditForm currentSupp={supp} />}
     </div>
   );
 }
