@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, createContext } from 'react';
+import { useState, createContext } from 'react';
 import Supp from './components/Supp';
 
 /* Component-wide code */
@@ -9,16 +9,14 @@ import Supp from './components/Supp';
 export const SuppsContext = createContext();
 
 function App() {
-  // Main state data array (needs to be persisted)
+  // Main state data array
   const [supps, setSupps] = useState([
     { id: 1, suppName: 'Vitamin A', isChecked: false, isEditing: false },
     { id: 2, suppName: 'Vitamin B', isChecked: false, isEditing: false },
     { id: 3, suppName: 'Vitamin C', isChecked: false, isEditing: false },
-    { id: 4, suppName: 'Vitamin A', isChecked: false, isEditing: false },
+    { id: 4, suppName: 'Vitamin D', isChecked: false, isEditing: false },
+    { id: 5, suppName: 'Vitamin E', isChecked: false, isEditing: false },
   ]);
-
-  // Run this when App loads
-  useEffect(() => {}, []);
 
   /* Supplement checkboxes + edit\delete functions */
 
@@ -40,32 +38,6 @@ function App() {
         supp.id === id ? { ...supp, isEditing: !supp.isEditing } : supp
       )
     );
-  };
-
-  // Stage 2: Update the supplement's name (is passed to the SuppEditForm component)
-  // Edit supplement form - state
-  const [editInputValue, setEditInputValue] = useState('');
-
-  // Handle edit supplement form input
-  const handleEditChange = (event) => {
-    setEditInputValue(event.target.value);
-  };
-
-  // Handle edit supplement form submission
-  const handleEditClick = (event, currentSupp) => {
-    event.preventDefault();
-
-    if (editInputValue !== '') {
-      setSupps((prevSupps) =>
-        prevSupps.map((supp) =>
-          supp.id === currentSupp.id
-            ? { ...supp, suppName: editInputValue, isEditing: false }
-            : supp
-        )
-      );
-
-      setEditInputValue('');
-    }
   };
 
   // Handle supplement delete
@@ -92,8 +64,8 @@ function App() {
     setInputValue(event.target.value);
   };
 
-  // Next supplement's ID (also needs to be persisted)
-  const [nextSuppId, setNextSuppId] = useState(5);
+  // Next supplement's ID
+  const [nextSuppId, setNextSuppId] = useState(6);
 
   // Handle new supplement form submission
   const handleSubmit = (event) => {
@@ -109,7 +81,9 @@ function App() {
           isEditing: false,
         },
       ]);
+
       setNextSuppId((prevNextSuppId) => prevNextSuppId + 1);
+
       setInputValue('');
     }
   };
@@ -120,9 +94,7 @@ function App() {
         handleSuppChange,
         handleSuppDelete,
         handleSuppEdit,
-        editInputValue,
-        handleEditChange,
-        handleEditClick,
+        setSupps,
       }}
     >
       <div className='maindiv'>

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { SuppsContext } from '../App';
 import SuppEditForm from './SuppEditForm';
 import { FaRegEdit } from 'react-icons/fa';
