@@ -1,15 +1,15 @@
 import { useState, createContext } from 'react';
 import Supp from './components/Supp';
 
-/* Component-wide code */
+// Note: It's possible and also recommended to create a seperate file for the app's entire context, instead of doing it in the App.jsx file, like I did here. Also, it's possible to add custom hooks to the context, which is a good idea if you want to keep your code DRY
 
-// Note: It's possible and also recommended to create a seperate file for the app's entire context, instead of doing it in the App.jsx file, like I did here. Also, it's possible to add custom hooks to the context, which is a good idea if you want to keep your code DRY. More info in Jonas's React course
-
-// Create and export a context for all of the app's global data
+// Create and export a context for all of the app's global state\functions
 export const SuppsContext = createContext();
 
 function App() {
-  // Main state data array
+  /* App-Wide State */
+
+  // Main data array state
   const [supps, setSupps] = useState([
     { id: 1, suppName: 'Vitamin A', isChecked: false, isEditing: false },
     { id: 2, suppName: 'Vitamin B', isChecked: false, isEditing: false },
@@ -17,6 +17,9 @@ function App() {
     { id: 4, suppName: 'Vitamin D', isChecked: false, isEditing: false },
     { id: 5, suppName: 'Vitamin E', isChecked: false, isEditing: false },
   ]);
+
+  // Next supplement's ID state
+  const [nextSuppId, setNextSuppId] = useState(6);
 
   /* Supplement checkboxes + edit\delete functions */
 
@@ -63,9 +66,6 @@ function App() {
   const handleChange = (event) => {
     setInputValue(event.target.value);
   };
-
-  // Next supplement's ID
-  const [nextSuppId, setNextSuppId] = useState(6);
 
   // Handle new supplement form submission
   const handleSubmit = (event) => {
