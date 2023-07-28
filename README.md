@@ -6,7 +6,7 @@ Live version: https://wellender.netlify.app/
 
 Screenshot:
 
-<img src="./public/screen1.png">
+<img src="./public/screen3.png">
 
 <!-- toc -->
 
