@@ -1,4 +1,4 @@
-# Wellender
+# Wellender - Version 1 (React + Context API)
 
 ### A supplement tracking app and more
 
